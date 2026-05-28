@@ -1,4 +1,3 @@
-// Definimos el modelo ultraliviano (360MB) usando el objeto global de la librería webllm
 // Cambiamos a un modelo ultraliviano (350MB) con soporte oficial garantizado en el CDN
 const selectedModel = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC";
 let engine = null;
@@ -9,7 +8,7 @@ const analyzeBtn = document.getElementById("analyze-btn");
 const statusLog = document.getElementById("status-log");
 const analysisResult = document.getElementById("analysis-result");
 
-// NUEVOS: Elementos de la barra de progreso
+// Elementos de la barra de progreso
 const progressContainer = document.getElementById("progress-container");
 const downloadProgress = document.getElementById("download-progress");
 
@@ -43,9 +42,7 @@ downloadBtn.addEventListener("click", function() {
         .then(function() {
             statusLog.innerText = "Estado: ¡NEXUS cargado con éxito en tu computadora!";
             analyzeBtn.disabled = false; // Habilitamos el botón para analizar el trabajo
-            
-            // Opcional: Ocultamos o dejamos la barra al 100% como confirmación estética
-            downloadProgress.value = 1;
+            downloadProgress.value = 1;  // Llenamos la barra por completo
         })
         .catch(function(error) {
             statusLog.innerText = "Error: Tu hardware o navegador no soporta WebGPU.";
