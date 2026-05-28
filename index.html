@@ -13,11 +13,13 @@
     </header>
 
     <main class="container">
+        <!-- 1. Inicialización del Motor Local -->
         <section class="card setup-section">
             <h2>1. Inicialización del Motor Algorítmico</h2>
-            <p class="info-text">Activación del analizador estático local (No consume internet ni hardware gráfico).</p>
-            <button id="download-btn">Activar Motor Analítico Local</button>
+            <p class="info-text">Activación del analizador estático y redes léxicas locales (No consume internet ni hardware gráfico).</p>
+            <button id="download-btn">Activar Motor de Inferencia Léxica UNTREF</button>
             
+            <!-- Barra de progreso visual -->
             <div id="progress-container" style="margin-top: 1rem; display: none;">
                 <progress id="download-progress" value="0" max="1" style="width: 100%; height: 20px;"></progress>
             </div>
@@ -25,6 +27,7 @@
             <div id="status-log">Estado: Esperando activación...</div>
         </section>
 
+        <!-- 2. Formulario de la Grilla de Transparencia -->
         <section class="card form-section">
             <h2>2. Declaración de Transparencia (Estudiante)</h2>
             <form id="grilla-form">
@@ -49,6 +52,7 @@
             </form>
         </section>
 
+        <!-- 3. Output de la IA Incomodadora -->
         <section class="card output-section">
             <h2>3. Devolución Formativa (Pedagogía de la Pregunta)</h2>
             <div id="analysis-result">
@@ -57,6 +61,10 @@
         </section>
     </main>
 
+    <!-- LIBRERÍA DE INTELIGENCIA LÉXICA NATIVA (NLP/ML en Cliente) -->
+    <script src="https://unpkg.com/compromise"></script>
+    
+    <!-- Lógica institucional optimizada -->
     <script src="app.js"></script>
 </body>
 </html>
