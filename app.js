@@ -1,5 +1,6 @@
-// Definimos el modelo liviano de la cátedra usando el objeto global de la librería webllm
-const selectedModel = "Gemma-2b-it-q4f16_1-MLC";
+// Definimos el modelo ultraliviano (360MB) usando el objeto global de la librería webllm
+// Esto garantiza descargas en segundos incluso con conexiones lentas
+const selectedModel = "SmolLM2-360M-Instruct-q4f16_1-MLC";
 let engine = null;
 
 // Capturamos todos los elementos de la interfaz de la grilla de NEXUS UNTREF
@@ -8,17 +9,17 @@ const analyzeBtn = document.getElementById("analyze-btn");
 const statusLog = document.getElementById("status-log");
 const analysisResult = document.getElementById("analysis-result");
 
-// 1. Función tradicional para descargar e inicializar el modelo local en el navegador
+// 1. Función para descargar e inicializar el modelo ultraliviano en el navegador
 downloadBtn.addEventListener("click", function() {
     downloadBtn.disabled = true;
     statusLog.innerText = "Estado: Inicializando motor WebGPU en tu navegador...";
     
-    // Accedemos a la librería a través del objeto global 'webllm' cargado previamente por el HTML
+    // Accedemos a la librería a través del objeto global 'webllm' cargado por el HTML
     webllm.CreateGenericEngine()
         .then(function(createdEngine) {
             engine = createdEngine;
             
-            // Configuramos el callback para mostrar el progreso real de la descarga en pantalla
+            // Callback para mostrar el progreso real de la descarga en pantalla
             engine.setInitProgressCallback(function(report) {
                 statusLog.innerText = report.text;
             });
@@ -36,7 +37,7 @@ downloadBtn.addEventListener("click", function() {
         });
 });
 
-// 2. Función tradicional para procesar el texto bajo la pedagogía de la pregunta
+// 2. Función para procesar el texto bajo la pedagogía de la pregunta
 analyzeBtn.addEventListener("click", function() {
     const studentName = document.getElementById("student-name").value;
     const iaUsage = document.getElementById("ia-usage").value;
