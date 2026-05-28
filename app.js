@@ -1,4 +1,4 @@
-// Cambiamos a un modelo ultraliviano (350MB) con soporte oficial garantizado en el CDN
+// Modelo ultraliviano (350MB) con soporte oficial garantizado en el CDN
 const selectedModel = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC";
 let engine = null;
 
@@ -20,35 +20,38 @@ downloadBtn.addEventListener("click", function() {
     // Mostramos el contenedor de la barra al iniciar la descarga
     progressContainer.style.display = "block";
     
-    // Accedemos a la librería a través del objeto global 'webllm' cargado por el HTML
-    webllm.CreateGenericEngine()
-        .then(function(createdEngine) {
-            engine = createdEngine;
+    try {
+        // Corrección: Usamos el constructor clásico compatible con el script global del HTML
+        engine = new webllm.Engine();
+        
+        // Callback para capturar el progreso real enviado por WebLLM
+        engine.setInitProgressCallback(function(report) {
+            // Actualizamos el texto informativo de la grilla
+            statusLog.innerText = report.text;
             
-            // Callback para capturar el progreso real enviado por WebLLM
-            engine.setInitProgressCallback(function(report) {
-                // Actualizamos el texto informativo
-                statusLog.innerText = report.text;
-                
-                // Actualizamos el valor de la barra de progreso (report.progress va de 0 a 1)
-                if (report.progress !== undefined) {
-                    downloadProgress.value = report.progress;
-                }
-            });
-            
-            // Cargamos el modelo seleccionado en la memoria local de la computadora
-            return engine.reload(selectedModel);
-        })
-        .then(function() {
-            statusLog.innerText = "Estado: ¡NEXUS cargado con éxito en tu computadora!";
-            analyzeBtn.disabled = false; // Habilitamos el botón para analizar el trabajo
-            downloadProgress.value = 1;  // Llenamos la barra por completo
-        })
-        .catch(function(error) {
-            statusLog.innerText = "Error: Tu hardware o navegador no soporta WebGPU.";
-            progressContainer.style.display = "none";
-            console.error(error);
+            // Actualizamos el valor de la barra de progreso (report.progress va de 0 a 1)
+            if (report.progress !== undefined) {
+                downloadProgress.value = report.progress;
+            }
         });
+        
+        // Cargamos el modelo seleccionado en la memoria local de la computadora
+        engine.reload(selectedModel)
+            .then(function() {
+                statusLog.innerText = "Estado: ¡NEXUS cargado con éxito en tu computadora!";
+                analyzeBtn.disabled = false; // Habilitamos el botón para analizar el trabajo
+                downloadProgress.value = 1;  // Llenamos la barra por completo
+            })
+            .catch(function(error) {
+                statusLog.innerText = "Error al recargar el modelo en el motor local.";
+                console.error(error);
+            });
+
+    } catch (error) {
+        statusLog.innerText = "Error: Tu hardware o navegador no soporta WebGPU.";
+        progressContainer.style.display = "none";
+        console.error(error);
+    }
 });
 
 // 2. Función tradicional para procesar el texto bajo la pedagogía de la pregunta
@@ -73,7 +76,7 @@ analyzeBtn.addEventListener("click", function() {
         { role: "user", content: "Este es mi trabajo práctico: " + textOutput }
     ];
 
-    // Ejecutamos la inferencia de forma 100% local usando Promesas clásicas
+    // Ejecutamos la inferencia de forma 100% local usando la instancia activa del motor
     engine.chat.completions.create({ messages: messages })
         .then(function(reply) {
             const aiResponse = reply.choices[0].message.content;
