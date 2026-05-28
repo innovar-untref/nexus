@@ -1,0 +1,122 @@
+:root {
+    --untref-blue: #002B49;     /* Azul oscuro institucional UNTREF */
+    --untref-bordeaux: #7A1C2C; /* Bordeaux/Marrón de acento institucional */
+    --untref-gray: #E9EDF0;     /* Gris institucional para fondos limpios */
+    --bg-color: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --text-color: #1E293B;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--untref-blue);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 5px solid var(--untref-bordeaux);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 43, 73, 0.06);
+    border: 1px solid rgba(0, 43, 73, 0.08);
+}
+
+.card h2 {
+    color: var(--untref-blue);
+    margin-top: 0;
+    border-bottom: 2px solid var(--untref-gray);
+    padding-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--untref-blue);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    background-color: #FAFAFA;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--untref-bordeaux);
+    background-color: #FFF;
+}
+
+button {
+    background-color: var(--untref-bordeaux);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    width: 100%;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #5F1320;
+}
+
+button:disabled {
+    background-color: #94A3B8;
+    cursor: not-allowed;
+}
+
+#status-log {
+    background: var(--untref-gray);
+    padding: 0.75rem;
+    border-left: 4px solid var(--untref-blue);
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--untref-blue);
+}
+
+#analysis-result {
+    padding: 1rem;
+    background-color: #F8FAFC;
+    border-radius: 6px;
+    border: 1px dashed var(--untref-blue);
+}
