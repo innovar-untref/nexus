@@ -1,18 +1,19 @@
 /* ==========================================================================
-   NEXUS UNTREF - Ecosistema de Estilos Oficiales
+   NEXUS UNTREF - Ecosistema de Estilos Oficiales (Basado en image_1ed943.jpg)
    ========================================================================== */
 
 :root {
-    --untref-vino: #7A1C2C;          /* Borgoña Institucional UNTREF */
-    --untref-vino-claro: #96283B;
-    --untref-dorado: #D9A74A;        /* Acento de Excelencia Académica */
-    --untref-fondo: #FDFDFB;         /* Color papel obra natural */
+    --untref-azul: #1E5F94;          /* Azul Institucional del banner principal */
+    --untref-azul-oscuro: #15436A;   /* Tono de contraste y tipografía fuerte */
+    --untref-celeste-nav: #1B75BB;   /* Celeste de botones de navegación lateral */
+    --untref-fondo: #FFFFFF;         /* Fondo blanco limpio e impecable */
     --untref-superficie: #FFFFFF;
-    --untref-gris-texto: #2D2D2D;    /* Máxima legibilidad */
-    --untref-gris-mutado: #666666;
-    --untref-borde: #E3DEC3;         /* Tono pergamino suave */
-    --untref-exito: #2E7D32;
-    --sombra-sutil: 0 4px 20px rgba(122, 28, 44, 0.04);
+    --untref-gris-texto: #1A1A1A;    /* Negro/Gris del menú superior y títulos */
+    --untref-gris-mutado: #5A5A5A;   /* Para descripciones y textos secundarios */
+    --untref-borde: #E2E8F0;         /* Líneas divisorias sutiles */
+    --untref-rojo-alerta: #C53030;   /* Estado de Actividad Frágil */
+    --untref-verde-exito: #2F855A;   /* Estado Antifrágil / Soberano */
+    --sombra-sutil: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 * {
@@ -22,7 +23,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--untref-fondo);
     color: var(--untref-gris-texto);
     line-height: 1.6;
@@ -34,19 +35,19 @@ body {
     margin: 0 auto;
 }
 
-/* Identidad de Cabecera Escolar */
+/* Identidad de Cabecera (Línea simple y sólida como en la web oficial) */
 header {
     text-align: center;
     margin-bottom: 3rem;
-    border-bottom: 4px double var(--untref-vino);
+    border-bottom: 2px solid var(--untref-azul);
     padding-bottom: 1.8rem;
 }
 
 header h1 {
-    color: var(--untref-vino);
-    font-size: 2.8rem;
+    color: var(--untref-gris-texto);
+    font-size: 2.6rem;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
     margin-bottom: 0.4rem;
 }
 
@@ -56,11 +57,11 @@ header p {
     font-style: italic;
 }
 
-/* Tarjetas Formativas */
+/* Tarjetas Académicas Limpias */
 .card {
     background-color: var(--untref-superficie);
     border: 1px solid var(--untref-borde);
-    border-radius: 4px; /* Estilo académico rígido y limpio */
+    border-radius: 4px;
     padding: 2.5rem;
     margin-bottom: 2.5rem;
     box-shadow: var(--sombra-sutil);
@@ -68,11 +69,11 @@ header p {
 }
 
 .card:hover {
-    box-shadow: 0 6px 25px rgba(122, 28, 44, 0.08);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
 .card h2 {
-    color: var(--untref-vino);
+    color: var(--untref-azul);
     font-size: 1.35rem;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--untref-borde);
@@ -87,7 +88,7 @@ header p {
     margin-bottom: 1.5rem;
 }
 
-/* Entradas de Formularios Críticos */
+/* Formulario de Transparencia Pedagógica */
 label {
     display: block;
     font-weight: 700;
@@ -101,8 +102,8 @@ input[type="text"], select, textarea {
     padding: 0.9rem;
     margin-bottom: 1.8rem;
     border: 1px solid var(--untref-borde);
-    border-radius: 3px;
-    background-color: #FCFBF9;
+    border-radius: 4px;
+    background-color: #FAFAFA;
     font-family: inherit;
     font-size: 1rem;
     color: var(--untref-gris-texto);
@@ -111,12 +112,12 @@ input[type="text"], select, textarea {
 
 input[type="text"]:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--untref-vino);
+    border-color: var(--untref-azul);
     background-color: var(--untref-superficie);
-    box-shadow: 0 0 0 3px rgba(122, 28, 44, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 95, 148, 0.15);
 }
 
-/* Acciones y Botonera */
+/* Acciones y Botonera Estilo Web UNTREF */
 button {
     width: 100%;
     cursor: pointer;
@@ -125,37 +126,37 @@ button {
     font-weight: 700;
     padding: 1rem;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.2s ease;
 }
 
 #download-btn {
-    background-color: var(--untref-gris-texto);
+    background-color: #334155;
     color: white;
 }
 
 #download-btn:hover:not(:disabled) {
-    background-color: #000000;
+    background-color: #0f172a;
 }
 
 #analyze-btn {
-    background-color: var(--untref-vino);
+    background-color: var(--untref-azul);
     color: white;
 }
 
 #analyze-btn:hover:not(:disabled) {
-    background-color: var(--untref-vino-claro);
+    background-color: var(--untref-azul-oscuro);
 }
 
 button:disabled {
-    background-color: #EAEAEA !important;
-    color: #999999 !important;
+    background-color: #E2E8F0 !important;
+    color: #94A3B8 !important;
     cursor: not-allowed;
 }
 
-/* Logs y Estado */
+/* Indicadores de Carga del Motor */
 #status-log {
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -163,46 +164,62 @@ button:disabled {
 }
 
 .log-processing {
-    color: var(--untref-dorado);
+    color: var(--untref-celeste-nav);
     animation: palpitar 1.5s infinite;
 }
 
 .log-success {
-    color: var(--untref-exito);
+    color: var(--untref-verde-exito);
 }
 
 progress {
     appearance: none;
     width: 100%;
-    height: 10px;
-    border-radius: 5px;
+    height: 8px;
+    border-radius: 4px;
     overflow: hidden;
 }
 
-progress::-webkit-progress-bar { background-color: #EAEAEA; }
-progress::-webkit-progress-value { background-color: var(--untref-dorado); }
+progress::-webkit-progress-bar { background-color: #E2E8F0; }
+progress::-webkit-progress-value { background-color: var(--untref-celeste-nav); }
 
-/* Componentes Dinámicos de Inferencia */
+/* Bloque del Reporte Evaluativo */
 .report-header {
-    border-bottom: 2px solid var(--untref-vino);
+    border-bottom: 2px solid var(--untref-azul);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
 }
 
+.report-header h3 {
+    color: var(--untref-gris-texto);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
 .badge-status {
-    background-color: var(--untref-vino);
+    background-color: var(--untref-azul);
     color: white;
-    padding: 3px 8px;
+    padding: 4px 10px;
     font-size: 0.8rem;
     font-weight: bold;
+    border-radius: 3px;
     text-transform: uppercase;
 }
 
+/* Caja de Métricas Computadas */
 .metrics-box {
-    background-color: #FAF9F5;
-    border-left: 5px solid var(--untref-dorado);
+    background-color: #F8FAFC;
+    border-left: 5px solid var(--untref-azul);
     padding: 1.5rem;
     margin-bottom: 2rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.metrics-title {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--untref-azul-oscuro);
+    margin-bottom: 1rem;
 }
 
 .metrics-table {
@@ -212,44 +229,72 @@ progress::-webkit-progress-value { background-color: var(--untref-dorado); }
 }
 
 .metrics-table td {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #EAE6D8;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #E2E8F0;
 }
 
 .text-right { text-align: right; }
 
+/* Etiquetas de Clichés Encontrados */
+.cliche-tags {
+    margin-top: 1.2rem;
+}
+
 .tag {
     display: inline-block;
-    background-color: rgba(122, 28, 44, 0.06);
-    color: var(--untref-vino);
-    padding: 2px 7px;
+    background-color: #F1F5F9;
+    color: #475569;
+    padding: 3px 8px;
     font-family: monospace;
     font-size: 0.8rem;
     margin: 3px;
-    border: 1px solid rgba(122, 28, 44, 0.15);
-}
-
-.diagnostico-text {
-    margin-top: 1rem;
-    padding: 0.8rem;
-    font-size: 0.9rem;
     border-radius: 3px;
+    border: 1px solid #CBD5E1;
 }
 
+/* Texto Diagnóstico */
+.diagnostico-text {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+}
+
+/* Títulos y Listas del Bloque de Interpelación */
 .interpellation-title {
-    margin: 2.5rem 0 1.2rem 0;
-    font-size: 1.1rem;
+    margin: 2.5rem 0 1.5rem 0;
+    font-size: 1.2rem;
+    color: var(--untref-gris-texto);
     text-transform: uppercase;
-    border-bottom: 1px dashed var(--untref-borde);
+    border-bottom: 2px solid var(--untref-borde);
     padding-bottom: 0.5rem;
+    letter-spacing: -0.3px;
 }
 
-.questions-list { padding-left: 1.5rem; }
-.questions-list li { margin-bottom: 1.5rem; font-size: 1rem; }
-.questions-list li::marker { color: var(--untref-vino); font-weight: bold; }
+.questions-list { 
+    padding-left: 1.2rem; 
+}
 
+.questions-list li { 
+    margin-bottom: 1.8rem; 
+    font-size: 1.05rem; 
+    color: var(--untref-gris-texto);
+    text-align: justify;
+}
+
+.questions-list li::marker { 
+    color: var(--untref-azul); 
+    font-weight: 800; 
+}
+
+.questions-list li strong {
+    color: var(--untref-azul-oscuro);
+}
+
+/* Animaciones */
 @keyframes palpitar {
-    0% { opacity: 0.5; }
+    0% { opacity: 0.6; }
     50% { opacity: 1; }
-    100% { opacity: 0.5; }
+    100% { opacity: 0.6; }
 }
