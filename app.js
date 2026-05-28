@@ -1,5 +1,6 @@
 // Definimos el modelo ultraliviano (360MB) usando el objeto global de la librería webllm
-const selectedModel = "SmolLM2-360M-Instruct-q4f16_1-MLC";
+// Cambiamos a un modelo ultraliviano (350MB) con soporte oficial garantizado en el CDN
+const selectedModel = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC";
 let engine = null;
 
 // Capturamos todos los elementos de la interfaz de la grilla de NEXUS UNTREF
