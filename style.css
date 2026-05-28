@@ -120,3 +120,18 @@ button:disabled {
     border-radius: 6px;
     border: 1px dashed var(--untref-blue);
 }
+/* Estilo estético para la barra de progreso institucional */
+progress {
+    accent-color: var(--untref-bordeaux); /* Pone la barra color bordeaux en navegadores modernos */
+    border: 1px solid var(--untref-blue);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--untref-gray);
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--untref-bordeaux);
+}
