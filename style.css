@@ -1,25 +1,20 @@
 /* ==========================================================================
-   NEXUS UNTREF - Ecosistema de Estilos Globales
-   Diseño Académico, Antifrágil y Responsivo
+   NEXUS UNTREF - Ecosistema de Estilos Oficiales
    ========================================================================== */
 
-/* Variables de Identidad Visual Institucional */
 :root {
-    --color-primario: #7A1C2C;       /* Borgoña / Vino UNTREF */
-    --color-primario-claro: #96283B;
-    --color-secundario: #D9A74A;     /* Dorado de Acento */
-    --color-fondo-global: #F4F1EA;   /* Arena muy claro, descanso visual */
-    --color-superficie: #FFFFFF;     /* Tarjetas limpias */
-    --color-texto-principal: #2B2B2B;/* Gris oscuro de alta legibilidad */
-    --color-texto-mutado: #555555;   
-    --color-exito: #27AE60;          /* Verde para soberanía léxica */
-    --color-borde: #E0DCD3;          
-    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.05);
-    --sombra-enfocada: 0 6px 20px rgba(122, 28, 44, 0.15);
+    --untref-vino: #7A1C2C;          /* Borgoña Institucional UNTREF */
+    --untref-vino-claro: #96283B;
+    --untref-dorado: #D9A74A;        /* Acento de Excelencia Académica */
+    --untref-fondo: #FDFDFB;         /* Color papel obra natural */
+    --untref-superficie: #FFFFFF;
+    --untref-gris-texto: #2D2D2D;    /* Máxima legibilidad */
+    --untref-gris-mutado: #666666;
+    --untref-borde: #E3DEC3;         /* Tono pergamino suave */
+    --untref-exito: #2E7D32;
+    --sombra-sutil: 0 4px 20px rgba(122, 28, 44, 0.04);
 }
 
-/* Reseteo General de Caja y Tipografía */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,362 +22,234 @@
 }
 
 body {
-    font-family: var(--fuente-principal);
-    background-color: var(--color-fondo-global);
-    color: var(--color-texto-principal);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--untref-fondo);
+    color: var(--untref-gris-texto);
     line-height: 1.6;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
 }
 
-/* Contenedor Principal Limitador */
 .container {
-    max-width: 850px;
+    max-width: 880px;
     margin: 0 auto;
 }
 
-/* Encabezado del Sistema (Header) */
+/* Identidad de Cabecera Escolar */
 header {
     text-align: center;
-    margin-bottom: 2.5rem;
-    border-bottom: 3px double var(--color-primario);
-    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 4px double var(--untref-vino);
+    padding-bottom: 1.8rem;
 }
 
 header h1 {
-    color: var(--color-primario);
-    font-size: 2.5rem;
+    color: var(--untref-vino);
+    font-size: 2.8rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
 }
 
 header p {
-    color: var(--color-texto-mutado);
+    color: var(--untref-gris-mutado);
     font-size: 1.1rem;
     font-style: italic;
 }
 
-/* Componente Base: Tarjetas (Cards) */
+/* Tarjetas Formativas */
 .card {
-    background-color: var(--color-superficie);
-    border: 1px solid var(--color-borde);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--sombra-suave);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--untref-superficie);
+    border: 1px solid var(--untref-borde);
+    border-radius: 4px; /* Estilo académico rígido y limpio */
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--sombra-sutil);
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 25px rgba(122, 28, 44, 0.08);
 }
 
 .card h2 {
-    color: var(--color-primario);
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-    border-bottom: 1px solid var(--color-borde);
-    padding-bottom: 0.5rem;
+    color: var(--untref-vino);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--untref-borde);
+    padding-bottom: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-/* Textos Informativos Internos */
 .info-text {
-    color: var(--color-texto-mutado);
+    color: var(--untref-gris-mutado);
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
 }
 
-/* Formulario e Inputs de la Grilla de Transparencia */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Entradas de Formularios Críticos */
 label {
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-    color: var(--color-texto-principal);
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--untref-gris-texto);
     font-size: 0.95rem;
 }
 
-input[type="text"],
-select,
-textarea {
+input[type="text"], select, textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 5px;
-    background-color: #FAF9F6; /* Fondo de hoja de papel */
+    padding: 0.9rem;
+    margin-bottom: 1.8rem;
+    border: 1px solid var(--untref-borde);
+    border-radius: 3px;
+    background-color: #FCFBF9;
     font-family: inherit;
     font-size: 1rem;
-    color: var(--color-texto-principal);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--untref-gris-texto);
+    transition: all 0.2s ease;
 }
 
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
+input[type="text"]:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--color-primario);
-    box-shadow: var(--sombra-enfocada);
-    background-color: var(--color-superficie);
+    border-color: var(--untref-vino);
+    background-color: var(--untref-superficie);
+    box-shadow: 0 0 0 3px rgba(122, 28, 44, 0.1);
 }
 
-textarea {
-    resize: vertical;
-}
-
-/* Sistema de Botones Estilizados */
+/* Acciones y Botonera */
 button {
+    width: 100%;
     cursor: pointer;
     font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 1rem;
     border: none;
-    border-radius: 5px;
-    transition: all 0.2s ease;
+    border-radius: 3px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
 }
 
-/* Botón de Activación (Inicialización) */
 #download-btn {
-    background-color: var(--color-texto-principal);
-    color: var(--color-superficie);
-    width: 100%;
+    background-color: var(--untref-gris-texto);
+    color: white;
 }
 
 #download-btn:hover:not(:disabled) {
     background-color: #000000;
 }
 
-/* Botón de Análisis Primario */
 #analyze-btn {
-    background-color: var(--color-primario);
-    color: var(--color-superficie);
-    width: 100%;
-    box-shadow: 0 4px 10px rgba(122, 28, 44, 0.2);
+    background-color: var(--untref-vino);
+    color: white;
 }
 
 #analyze-btn:hover:not(:disabled) {
-    background-color: var(--color-primario-claro);
-    transform: translateY(-1px);
+    background-color: var(--untref-vino-claro);
 }
 
 button:disabled {
-    background-color: #CCCCCC !important;
-    color: #888888 !important;
+    background-color: #EAEAEA !important;
+    color: #999999 !important;
     cursor: not-allowed;
-    box-shadow: none !important;
-    transform: none !important;
 }
 
-/* Logs de Estado de Carga */
+/* Logs y Estado */
 #status-log {
     margin-top: 1rem;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-texto-mutado);
 }
 
 .log-processing {
-    color: #D35400 !important;
-    animation: palpitar 1.5s infinite ease-in-out;
+    color: var(--untref-dorado);
+    animation: palpitar 1.5s infinite;
 }
 
 .log-success {
-    color: var(--color-exito) !important;
+    color: var(--untref-exito);
 }
 
-/* Barra de Progreso Algorítmica */
 progress {
-    -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 12px;
-    border-radius: 6px;
+    height: 10px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
-progress::-webkit-progress-bar {
-    background-color: var(--color-borde);
-}
+progress::-webkit-progress-bar { background-color: #EAEAEA; }
+progress::-webkit-progress-value { background-color: var(--untref-dorado); }
 
-progress::-webkit-progress-value {
-    background-color: var(--color-secundario);
-}
-
-/* ==========================================================================
-   Componentes Dinámicos del Reporte de Inferencia (Inyectados por JS)
-   ========================================================================== */
-
+/* Componentes Dinámicos de Inferencia */
 .report-header {
-    border-bottom: 2px solid var(--color-primario);
-    padding-bottom: 0.8rem;
-    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--untref-vino);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
-.report-header h3 {
-    color: var(--color-primario);
-    margin: 0;
-    font-size: 1.2rem;
-    letter-spacing: 0.5px;
-}
-
-.report-header p {
-    margin: 0.4rem 0 0 0;
-    color: var(--color-texto-mutado);
-    font-size: 0.95rem;
-}
-
-/* Distintivo de Estado del Contrato Didáctico */
 .badge-status {
-    background-color: var(--color-primario);
-    color: var(--color-superficie);
+    background-color: var(--untref-vino);
+    color: white;
     padding: 3px 8px;
-    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-/* Caja de Métricas Científicas del NLP */
 .metrics-box {
-    background-color: #FBF9F6;
-    border-left: 4px solid var(--color-secundario);
-    padding: 1.2rem;
-    margin: 1.5rem 0;
-    border-radius: 0 6px 6px 0;
-}
-
-.metrics-title {
-    display: block;
-    color: #A3761A;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.6rem;
+    background-color: #FAF9F5;
+    border-left: 5px solid var(--untref-dorado);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .metrics-table {
     width: 100%;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     border-collapse: collapse;
 }
 
 .metrics-table td {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #EAEAEA;
-    color: var(--color-texto-principal);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #EAE6D8;
 }
 
-.text-right {
-    text-align: right;
-}
-
-/* Etiquetas Visuales de Clichés IA Detectados */
-.cliche-tags {
-    margin-top: 1rem;
-    padding-top: 0.6rem;
-    border-top: 1px dashed var(--color-borde);
-}
-
-.cliche-tags small {
-    color: var(--color-texto-mutado);
-    font-weight: 600;
-}
+.text-right { text-align: right; }
 
 .tag {
     display: inline-block;
-    background-color: #EAEAEA;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: #444444;
+    background-color: rgba(122, 28, 44, 0.06);
+    color: var(--untref-vino);
+    padding: 2px 7px;
     font-family: monospace;
-    margin-left: 0.3rem;
-    margin-top: 0.3rem;
-    border: 1px solid #DCDCDC;
-}
-
-/* Texto del Diagnóstico */
-.diagnostico-text {
-    margin-top: 0.8rem;
-    color: var(--color-texto-principal);
-    font-size: 0.9rem;
-    background-color: rgba(217, 167, 74, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-}
-
-/* Título de las Interpelaciones */
-.interpellation-title {
-    color: var(--color-texto-principal);
-    margin-top: 1.8rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px dashed var(--color-borde);
-    padding-bottom: 0.4rem;
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Lista Ordenada de Preguntas Críticas Estilizadas */
-.questions-list {
-    padding-left: 1.2rem;
-}
-
-.questions-list li {
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px dashed #F0F0F0;
-    line-height: 1.6;
-    color: #111111;
-    font-size: 0.95rem;
-}
-
-.questions-list li::marker {
-    color: var(--color-primario);
-    font-weight: bold;
-}
-
-/* Pie de Página del Reporte */
-.report-footer {
-    margin-top: 2rem;
-    border-top: 1px solid var(--color-borde);
-    padding-top: 1rem;
-    text-align: center;
-}
-
-.report-footer small {
-    color: var(--color-primario);
-    font-weight: bold;
     font-size: 0.8rem;
+    margin: 3px;
+    border: 1px solid rgba(122, 28, 44, 0.15);
+}
+
+.diagnostico-text {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+}
+
+.interpellation-title {
+    margin: 2.5rem 0 1.2rem 0;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    border-bottom: 1px dashed var(--untref-borde);
+    padding-bottom: 0.5rem;
 }
 
-/* Efecto de Animación para Estados */
+.questions-list { padding-left: 1.5rem; }
+.questions-list li { margin-bottom: 1.5rem; font-size: 1rem; }
+.questions-list li::marker { color: var(--untref-vino); font-weight: bold; }
+
 @keyframes palpitar {
-    0% { opacity: 0.6; }
+    0% { opacity: 0.5; }
     50% { opacity: 1; }
-    100% { opacity: 0.6; }
-}
-
-/* Adaptabilidad para Dispositivos Móviles (Responsividad) */
-@media (max-width: 600px) {
-    body {
-        padding: 1rem 0.5rem;
-    }
-    .card {
-        padding: 1.2rem;
-    }
-    header h1 {
-        font-size: 1.8rem;
-    }
+    100% { opacity: 0.5; }
 }
