@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS UNTREF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>NEXUS UNTREF</h1>
+        <p>Ecosistema de Evaluación Antifrágil y Transparencia Postdigital</p>
+    </header>
 
+    <main class="container">
+        <!-- 1. Inicialización de la IA local -->
+        <section class="card setup-section">
+            <h2>1. Inicialización del Modelo Soberano</h2>
+            <p class="info-text">El modelo se descargará en tu navegador de forma local mediante WebGPU (Ocurre una sola vez).</p>
+            <button id="download-btn">Descargar Modelo Liviano (Gemma-2B)</button>
+            <div id="status-log">Estado: Esperando inicio...</div>
+        </section>
+
+        <!-- 2. Formulario de la Grilla de Transparencia -->
+        <section class="card form-section">
+            <h2>2. Declaración de Transparencia (Estudiante)</h2>
+            <form id="grilla-form">
+                <label for="student-name">Nombre y Apellido:</label>
+                <input type="text" id="student-name" required placeholder="Ej: Juan Pérez">
+
+                <label for="ia-usage">¿Cómo interactuaste con la IA en este trabajo?</label>
+                <select id="ia-usage">
+                    <option value="none">No utilicé IA (Proceso puramente analógico)</option>
+                    <option value="brainstorm">Co-piloto: Lluvia de ideas y estructura inicial</option>
+                    <option value="editing">Asistente: Corrección de estilo y traducción</option>
+                    <option value="heavy">Ensamblaje Profundo: Generación de contenido/código</option>
+                </select>
+
+                <label for="prompt-input">Pegá aquí el Prompt principal que utilizaste:</label>
+                <textarea id="prompt-input" rows="3" placeholder="Ej: Actúa como un experto en didáctica y..."></textarea>
+
+                <label for="text-output">Pegá el texto de tu trabajo o borrador para evaluar:</label>
+                <textarea id="text-output" rows="6" required placeholder="Escribí o pegá tu producción aquí..."></textarea>
+
+                <button type="button" id="analyze-btn" disabled>Firmar Contrato Didáctico y Analizar</button>
+            </form>
+        </section>
+
+        <!-- 3. Output de la IA Incomodadora -->
+        <section class="card output-section">
+            <h2>3. Devolución Formativa (Pedagogía de la Pregunta)</h2>
+            <div id="analysis-result">
+                <p>Aquí aparecerá la interpelación crítica del modelo para ejercitar tu alfabetismo postdigital.</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
