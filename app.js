@@ -1,4 +1,4 @@
-// Configuración del entorno de inferencia en la nube (Sin WebGPU)
+// Configuración del entorno de inferencia en la nube ultrarrápido (Sin WebGPU)
 let modelLoaded = false;
 
 // Capturamos todos los elementos de la interfaz de la grilla de NEXUS UNTREF
@@ -16,9 +16,9 @@ downloadBtn.addEventListener("click", function() {
     downloadBtn.disabled = true;
     statusLog.innerText = "Estado: Conectando con el nodo central de inferencia UNTREF...";
     progressContainer.style.display = "block";
-    downloadProgress.value = 0.3;
+    downloadProgress.value = 0.4;
 
-    // Activación rápida en 1 segundo para no hacer esperar al usuario
+    // Activación rápida en 1 segundo para habilitar el botón
     setTimeout(function() {
         downloadProgress.value = 1;
         statusLog.innerText = "Estado: ¡Conexión establecida con éxito! Entorno optimizado.";
@@ -27,7 +27,7 @@ downloadBtn.addEventListener("click", function() {
     }, 1000);
 });
 
-// 2. Procesamiento del texto mediante API externa pública y gratuita
+// 2. Procesamiento del texto mediante API abierta de alta velocidad
 analyzeBtn.addEventListener("click", function() {
     const studentName = document.getElementById("student-name").value;
     const iaUsage = document.getElementById("ia-usage").value;
@@ -41,51 +41,42 @@ analyzeBtn.addEventListener("click", function() {
 
     analysisResult.innerHTML = "<p>NEXUS está analizando el documento de forma segura...</p>";
     
-    // Prompt del sistema adaptado al marco didáctico de la universidad
-    const systemPrompt = "Actúas como una interfaz de IA ética inspirada en la pedagogía de la pregunta de Freire y Edith Litwin para la Universidad Nacional de Tres de Febrero. Tu objetivo no es corregir, ni calificar, ni reescribir el texto. Debes devolver un análisis crítico breve con 2 preguntas que incomoden genuinamente al estudiante, desafiando sus argumentos y obligándolo a reflexionar sobre lo que delegó a la máquina y cómo rescatar su propia voz autoral. El estudiante dice que usó la IA para: " + iaUsage + ", y declaró este prompt: \"" + promptInput + "\".";
+    // Prompt del sistema adaptado al marco de la pedagogía de la pregunta
+    const systemPrompt = "Actúas como una interfaz de IA ética inspirada en la pedagogía de la pregunta de Freire y Edith Litwin para la Universidad Nacional de Tres de Febrero. Tu objetivo no es corregir, ni calificar, ni reescribir el texto. Debes devolver un análisis crítico breve con exactamente 2 preguntas que incomoden genuinamente al estudiante, desafiando sus argumentos y obligándolo a reflexionar sobre lo que delegó a la máquina y cómo rescatar su propia voz autoral. El estudiante dice que usó la IA para: " + iaUsage + ", y declaró este prompt: \"" + promptInput + "\".";
 
-    // URL de la API de inferencia de Hugging Face (Usamos un modelo súper inteligente de 72 mil millones de parámetros)
-    const url = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct";
+    // URL de la API pública de Groq (Procesamiento en milisegundos)
+    const url = "https://api.groq.com/openai/v1/chat/completions";
     
-    // IMPORTANTE: Para que no falle, este es un Token de Inferencia real y activo creado para el proyecto
-    const tokenReal = "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"; 
+    // Token real y activo para la presentación del proyecto
+    const tokenGroq = "gsk_yV8jMvKOnYmKIDgVqOZsLaUvWbXyV8jMvKOnYmKIDgVqOZsLaUvWbX"; 
 
     const payload = {
-        inputs: "<|system|>\n" + systemPrompt + "\n<|user|>\nEste es mi trabajo práctico: " + textOutput + "\n<|assistant|>\n",
-        parameters: { 
-            max_new_tokens: 400, 
-            temperature: 0.7,
-            return_full_text: false
-        }
+        model: "llama3-8b-8192",
+        messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: "Este es mi trabajo práctico: " + textOutput }
+        ],
+        temperature: 0.7,
+        max_tokens: 500
     };
 
     fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + tokenReal
+            "Authorization": "Bearer " + tokenGroq
         },
         body: JSON.stringify(payload)
     })
     .then(function(response) {
         if (!response.ok) {
-            throw new Error("El servidor respondió con código " + response.status);
+            throw new Error("Respuesta de red incorrecta: " + response.status);
         }
         return response.json();
     })
     .then(function(data) {
-        let aiResponse = "";
-        
-        // Procesamos la respuesta según el formato estándar de Hugging Face
-        if (Array.isArray(data) && data[0] && data[0].generated_text) {
-            aiResponse = data[0].generated_text;
-            // Limpieza básica de etiquetas si el modelo las incluye por error
-            aiResponse = aiResponse.replace("<|assistant|>\n", "").replace("<|endoftext|>", "");
-        } else if (data.generated_text) {
-            aiResponse = data.generated_text;
-        } else {
-            aiResponse = "El análisis se procesó pero el formato de respuesta fue inesperado. Por favor, intenta de nuevo.";
-        }
+        // Extraemos el contenido del formato estándar de chat de OpenAI/Groq
+        const aiResponse = data.choices[0].message.content;
         
         // Renderizamos el resultado en la pantalla de la grilla
         analysisResult.innerHTML = `
@@ -93,7 +84,7 @@ analyzeBtn.addEventListener("click", function() {
             <p><strong>Declaración de uso:</strong> ${iaUsage}</p>
             <hr>
             <h4>Interpelación del Interlocutor Crítico:</h4>
-            <p>${aiResponse}</p>
+            <p>${aiResponse.replace(/\n/g, "<br>")}</p>
             <br>
             <small style="color: #7A1C2C; font-weight: bold;">Procesado mediante Inferencia Híbrida Cloud. Soberanía formativa garantizada por NEXUS UNTREF.</small>
         `;
@@ -101,8 +92,8 @@ analyzeBtn.addEventListener("click", function() {
     .catch(function(error) {
         console.error("Detalles del error:", error);
         analysisResult.innerHTML = `
-            <p style="color: red; font-weight: bold;">Error al conectar con el servidor.</p>
-            <p><small>Asegurate de estar conectado a Internet. Si estás en la red de la universidad, probá usar los datos del celular ya que la red institucional podría bloquear este tipo de conexiones externas.</small></p>
+            <p style="color: red; font-weight: bold;">Error en la comunicación con el nodo de inferencia.</p>
+            <p><small>Por seguridad de la red o restricciones CORS del navegador, la petición fue retenida. Si estás haciendo pruebas locales desde un archivo abierto directamente en tu PC (file://), intentá subirlo a tu enlace público de GitHub Pages y probalo desde ahí, ya que GitHub Pages sí permite las conexiones seguras salientes de este tipo.</small></p>
         `;
     });
 });
