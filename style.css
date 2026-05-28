@@ -1,137 +1,388 @@
+/* ==========================================================================
+   NEXUS UNTREF - Ecosistema de Estilos Globales
+   Diseño Académico, Antifrágil y Responsivo
+   ========================================================================== */
+
+/* Variables de Identidad Visual Institucional */
 :root {
-    --untref-blue: #002B49;     /* Azul oscuro institucional UNTREF */
-    --untref-bordeaux: #7A1C2C; /* Bordeaux/Marrón de acento institucional */
-    --untref-gray: #E9EDF0;     /* Gris institucional para fondos limpios */
-    --bg-color: #F8FAFC;
-    --card-bg: #FFFFFF;
-    --text-color: #1E293B;
+    --color-primario: #7A1C2C;       /* Borgoña / Vino UNTREF */
+    --color-primario-claro: #96283B;
+    --color-secundario: #D9A74A;     /* Dorado de Acento */
+    --color-fondo-global: #F4F1EA;   /* Arena muy claro, descanso visual */
+    --color-superficie: #FFFFFF;     /* Tarjetas limpias */
+    --color-texto-principal: #2B2B2B;/* Gris oscuro de alta legibilidad */
+    --color-texto-mutado: #555555;   
+    --color-exito: #27AE60;          /* Verde para soberanía léxica */
+    --color-borde: #E0DCD3;          
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --sombra-enfocada: 0 6px 20px rgba(122, 28, 44, 0.15);
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+/* Reseteo General de Caja y Tipografía */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo-global);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+
+/* Contenedor Principal Limitador */
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Encabezado del Sistema (Header) */
 header {
-    background-color: var(--untref-blue);
-    color: white;
     text-align: center;
-    padding: 3rem 1rem;
-    border-bottom: 5px solid var(--untref-bordeaux);
+    margin-bottom: 2.5rem;
+    border-bottom: 3px double var(--color-primario);
+    padding-bottom: 1.5rem;
 }
 
 header h1 {
-    margin: 0;
+    color: var(--color-primario);
     font-size: 2.5rem;
+    font-weight: 800;
     letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
 header p {
-    margin: 0.5rem 0 0 0;
+    color: var(--color-texto-mutado);
     font-size: 1.1rem;
-    opacity: 0.9;
+    font-style: italic;
 }
 
-.container {
-    max-width: 800px;
-    margin: 2.5rem auto;
-    padding: 0 1rem;
-}
-
+/* Componente Base: Tarjetas (Cards) */
 .card {
-    background: var(--card-bg);
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
     border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 43, 73, 0.06);
-    border: 1px solid rgba(0, 43, 73, 0.08);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
-    color: var(--untref-blue);
-    margin-top: 0;
-    border-bottom: 2px solid var(--untref-gray);
+    color: var(--color-primario);
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--color-borde);
     padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Textos Informativos Internos */
+.info-text {
+    color: var(--color-texto-mutado);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulario e Inputs de la Grilla de Transparencia */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    display: block;
     font-weight: 600;
-    margin-top: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--untref-blue);
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 0.85rem;
-    border: 1px solid #CBD5E1;
-    border-radius: 6px;
-    box-sizing: border-box;
+    margin-bottom: 0.4rem;
+    color: var(--color-texto-principal);
     font-size: 0.95rem;
-    background-color: #FAFAFA;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--untref-bordeaux);
-    background-color: #FFF;
-}
-
-button {
-    background-color: var(--untref-bordeaux);
-    color: white;
-    border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 1.5rem;
+input[type="text"],
+select,
+textarea {
     width: 100%;
-    font-weight: bold;
-    transition: background 0.2s ease;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    background-color: #FAF9F6; /* Fondo de hoja de papel */
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-button:hover {
-    background-color: #5F1320;
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: var(--sombra-enfocada);
+    background-color: var(--color-superficie);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Sistema de Botones Estilizados */
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botón de Activación (Inicialización) */
+#download-btn {
+    background-color: var(--color-texto-principal);
+    color: var(--color-superficie);
+    width: 100%;
+}
+
+#download-btn:hover:not(:disabled) {
+    background-color: #000000;
+}
+
+/* Botón de Análisis Primario */
+#analyze-btn {
+    background-color: var(--color-primario);
+    color: var(--color-superficie);
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(122, 28, 44, 0.2);
+}
+
+#analyze-btn:hover:not(:disabled) {
+    background-color: var(--color-primario-claro);
+    transform: translateY(-1px);
 }
 
 button:disabled {
-    background-color: #94A3B8;
+    background-color: #CCCCCC !important;
+    color: #888888 !important;
     cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
+/* Logs de Estado de Carga */
 #status-log {
-    background: var(--untref-gray);
-    padding: 0.75rem;
-    border-left: 4px solid var(--untref-blue);
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--untref-blue);
+    font-weight: 600;
+    color: var(--color-texto-mutado);
 }
 
-#analysis-result {
-    padding: 1rem;
-    background-color: #F8FAFC;
-    border-radius: 6px;
-    border: 1px dashed var(--untref-blue);
+.log-processing {
+    color: #D35400 !important;
+    animation: palpitar 1.5s infinite ease-in-out;
 }
-/* Estilo estético para la barra de progreso institucional */
+
+.log-success {
+    color: var(--color-exito) !important;
+}
+
+/* Barra de Progreso Algorítmica */
 progress {
-    accent-color: var(--untref-bordeaux); /* Pone la barra color bordeaux en navegadores modernos */
-    border: 1px solid var(--untref-blue);
-    border-radius: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
     overflow: hidden;
 }
 
 progress::-webkit-progress-bar {
-    background-color: var(--untref-gray);
+    background-color: var(--color-borde);
 }
 
 progress::-webkit-progress-value {
-    background-color: var(--untref-bordeaux);
+    background-color: var(--color-secundario);
+}
+
+/* ==========================================================================
+   Componentes Dinámicos del Reporte de Inferencia (Inyectados por JS)
+   ========================================================================== */
+
+.report-header {
+    border-bottom: 2px solid var(--color-primario);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.report-header h3 {
+    color: var(--color-primario);
+    margin: 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.report-header p {
+    margin: 0.4rem 0 0 0;
+    color: var(--color-texto-mutado);
+    font-size: 0.95rem;
+}
+
+/* Distintivo de Estado del Contrato Didáctico */
+.badge-status {
+    background-color: var(--color-primario);
+    color: var(--color-superficie);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Caja de Métricas Científicas del NLP */
+.metrics-box {
+    background-color: #FBF9F6;
+    border-left: 4px solid var(--color-secundario);
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.metrics-title {
+    display: block;
+    color: #A3761A;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+}
+
+.metrics-table {
+    width: 100%;
+    font-size: 0.9rem;
+    border-collapse: collapse;
+}
+
+.metrics-table td {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #EAEAEA;
+    color: var(--color-texto-principal);
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Etiquetas Visuales de Clichés IA Detectados */
+.cliche-tags {
+    margin-top: 1rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed var(--color-borde);
+}
+
+.cliche-tags small {
+    color: var(--color-texto-mutado);
+    font-weight: 600;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #EAEAEA;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #444444;
+    font-family: monospace;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    border: 1px solid #DCDCDC;
+}
+
+/* Texto del Diagnóstico */
+.diagnostico-text {
+    margin-top: 0.8rem;
+    color: var(--color-texto-principal);
+    font-size: 0.9rem;
+    background-color: rgba(217, 167, 74, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+/* Título de las Interpelaciones */
+.interpellation-title {
+    color: var(--color-texto-principal);
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--color-borde);
+    padding-bottom: 0.4rem;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Lista Ordenada de Preguntas Críticas Estilizadas */
+.questions-list {
+    padding-left: 1.2rem;
+}
+
+.questions-list li {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed #F0F0F0;
+    line-height: 1.6;
+    color: #111111;
+    font-size: 0.95rem;
+}
+
+.questions-list li::marker {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+/* Pie de Página del Reporte */
+.report-footer {
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-borde);
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.report-footer small {
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Efecto de Animación para Estados */
+@keyframes palpitar {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Adaptabilidad para Dispositivos Móviles (Responsividad) */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    .card {
+        padding: 1.2rem;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
 }
