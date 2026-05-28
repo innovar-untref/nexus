@@ -14,15 +14,15 @@
 
     <main class="container">
         <section class="card setup-section">
-            <h2>1. Inicialización del Modelo Soberano</h2>
-            <p class="info-text">El modelo se descargará en tu navegador de forma local mediante WebGPU (Ocurre una sola vez).</p>
-            <button id="download-btn">Descargar Modelo Ultraliviano (Qwen 350MB)</button>
+            <h2>1. Inicialización del Motor Algorítmico</h2>
+            <p class="info-text">Activación del analizador estático local (No consume internet ni hardware gráfico).</p>
+            <button id="download-btn">Activar Motor Analítico Local</button>
             
             <div id="progress-container" style="margin-top: 1rem; display: none;">
                 <progress id="download-progress" value="0" max="1" style="width: 100%; height: 20px;"></progress>
             </div>
             
-            <div id="status-log">Estado: Esperando inicio...</div>
+            <div id="status-log">Estado: Esperando activación...</div>
         </section>
 
         <section class="card form-section">
@@ -57,8 +57,6 @@
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm/dist/index.js"></script>
-    
     <script src="app.js"></script>
 </body>
 </html>
