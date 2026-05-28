@@ -1,5 +1,4 @@
 // Definimos el modelo ultraliviano (360MB) usando el objeto global de la librería webllm
-// Esto garantiza descargas en segundos incluso con conexiones lentas
 const selectedModel = "SmolLM2-360M-Instruct-q4f16_1-MLC";
 let engine = null;
 
@@ -9,19 +8,32 @@ const analyzeBtn = document.getElementById("analyze-btn");
 const statusLog = document.getElementById("status-log");
 const analysisResult = document.getElementById("analysis-result");
 
+// NUEVOS: Elementos de la barra de progreso
+const progressContainer = document.getElementById("progress-container");
+const downloadProgress = document.getElementById("download-progress");
+
 // 1. Función para descargar e inicializar el modelo ultraliviano en el navegador
 downloadBtn.addEventListener("click", function() {
     downloadBtn.disabled = true;
     statusLog.innerText = "Estado: Inicializando motor WebGPU en tu navegador...";
+    
+    // Mostramos el contenedor de la barra al iniciar la descarga
+    progressContainer.style.display = "block";
     
     // Accedemos a la librería a través del objeto global 'webllm' cargado por el HTML
     webllm.CreateGenericEngine()
         .then(function(createdEngine) {
             engine = createdEngine;
             
-            // Callback para mostrar el progreso real de la descarga en pantalla
+            // Callback para capturar el progreso real enviado por WebLLM
             engine.setInitProgressCallback(function(report) {
+                // Actualizamos el texto informativo
                 statusLog.innerText = report.text;
+                
+                // Actualizamos el valor de la barra de progreso (report.progress va de 0 a 1)
+                if (report.progress !== undefined) {
+                    downloadProgress.value = report.progress;
+                }
             });
             
             // Cargamos el modelo seleccionado en la memoria local de la computadora
@@ -30,21 +42,24 @@ downloadBtn.addEventListener("click", function() {
         .then(function() {
             statusLog.innerText = "Estado: ¡NEXUS cargado con éxito en tu computadora!";
             analyzeBtn.disabled = false; // Habilitamos el botón para analizar el trabajo
+            
+            // Opcional: Ocultamos o dejamos la barra al 100% como confirmación estética
+            downloadProgress.value = 1;
         })
         .catch(function(error) {
             statusLog.innerText = "Error: Tu hardware o navegador no soporta WebGPU.";
+            progressContainer.style.display = "none";
             console.error(error);
         });
 });
 
-// 2. Función para procesar el texto bajo la pedagogía de la pregunta
+// 2. Función tradicional para procesar el texto bajo la pedagogía de la pregunta
 analyzeBtn.addEventListener("click", function() {
     const studentName = document.getElementById("student-name").value;
     const iaUsage = document.getElementById("ia-usage").value;
     const promptInput = document.getElementById("prompt-input").value;
     const textOutput = document.getElementById("text-output").value;
 
-    // Validación de campos obligatorios del formulario
     if (!textOutput || !studentName) {
         alert("Por favor completá los campos obligatorios.");
         return;
