@@ -3,68 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS UNTREF</title>
+    <title>NEXUS UNTREF - Ecosistema de Evaluación Antifrágil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>NEXUS UNTREF</h1>
-        <p>Ecosistema de Evaluación Antifrágil y Transparencia Postdigital</p>
-    </header>
 
-    <main class="container">
-        <!-- 1. Inicialización del Motor Local -->
-        <section class="card setup-section">
-            <h2>1. Inicialización del Motor Algorítmico</h2>
-            <p class="info-text">Activación del analizador estático y redes léxicas locales (No consume internet ni hardware gráfico).</p>
-            <button id="download-btn">Activar Motor de Inferencia Léxica UNTREF</button>
-            
-            <!-- Barra de progreso visual -->
-            <div id="progress-container" style="margin-top: 1rem; display: none;">
-                <progress id="download-progress" value="0" max="1" style="width: 100%; height: 20px;"></progress>
-            </div>
-            
-            <div id="status-log">Estado: Esperando activación...</div>
-        </section>
+    <div class="container">
+        <header>
+            <h1>NEXUS UNTREF</h1>
+            <p>Ecosistema de Evaluación Antifrágil y Transparencia Postdigital</p>
+        </header>
 
-        <!-- 2. Formulario de la Grilla de Transparencia -->
-        <section class="card form-section">
-            <h2>2. Declaración de Transparencia (Estudiante)</h2>
-            <form id="grilla-form">
-                <label for="student-name">Nombre y Apellido:</label>
-                <input type="text" id="student-name" required placeholder="Ej: Juan Pérez">
+        <main>
+            <section class="card setup-section">
+                <h2>1. Inicialización del Motor Algorítmico</h2>
+                <p class="info-text">
+                    Activación del analizador sintáctico y carga del diccionario de redundancias probabilísticas para la evaluación de la labor intelectual humana.
+                </p>
+                
+                <button id="download-btn">Activar Motor de Inferencia Léxica UNTREF</button>
+                
+                <div id="progress-container" style="margin-top: 1.2rem; display: none;">
+                    <progress id="download-progress" value="0" max="1"></progress>
+                </div>
+                
+                <div id="status-log">Estado: Esperando firma del entorno didáctico...</div>
+            </section>
 
-                <label for="ia-usage">¿Cómo interactuaste con la IA en este trabajo?</label>
-                <select id="ia-usage">
-                    <option value="none">No utilicé IA (Proceso puramente analógico)</option>
-                    <option value="brainstorm">Co-piloto: Lluvia de ideas y estructura inicial</option>
-                    <option value="editing">Asistente: Corrección de estilo y traducción</option>
-                    <option value="heavy">Ensamblaje Profundo: Generación de contenido/código</option>
-                </select>
+            <section class="card form-section">
+                <h2>2. Declaración de Transparencia (Estudiante)</h2>
+                <form id="grilla-form" onsubmit="return false;">
+                    
+                    <label for="student-name">Nombre y Apellido del Estudiante:</label>
+                    <input type="text" id="student-name" required placeholder="Ej: Amílcar Pizzichini">
 
-                <label for="prompt-input">Pegá aquí el Prompt principal que utilizaste:</label>
-                <textarea id="prompt-input" rows="3" placeholder="Ej: Actúa como un experto en didáctica y..."></textarea>
+                    <label for="ia-usage">Régimen de Mediación Tecnológica (Resnik & Hosseini):</label>
+                    <select id="ia-usage">
+                        <option value="none">Uso Instrumental/No Declarable (Proceso analógico o sugerencias mínimas)</option>
+                        <option value="brainstorm">Uso Opcional/Declarable (Generación de ideas, estructuras y validación)</option>
+                        <option value="heavy">Uso Sustancial/Declaración Obligatoria (Redacción, síntesis o hibridación profunda)</option>
+                    </select>
 
-                <label for="text-output">Pegá el texto de tu trabajo o borrador para evaluar:</label>
-                <textarea id="text-output" rows="6" required placeholder="Escribí o pegá tu producción aquí..."></textarea>
+                    <label for="prompt-input">Ingeniería de Prompts y Contexto de Consulta (Opcional):</label>
+                    <textarea id="prompt-input" rows="3" placeholder="Ej: Actúa como un interlocutor crítico según el marco teológico..."></textarea>
 
-                <button type="button" id="analyze-btn" disabled>Firmar Contrato Didáctico y Analizar</button>
-            </form>
-        </section>
+                    <label for="text-output">Manuscrito o Producción Académica para Evaluar:</label>
+                    <textarea id="text-output" rows="8" required placeholder="Pegá o escribí acá el texto completo de tu borrador para iniciar la interpelación pedagógica..."></textarea>
 
-        <!-- 3. Output de la IA Incomodadora -->
-        <section class="card output-section">
-            <h2>3. Devolución Formativa (Pedagogía de la Pregunta)</h2>
-            <div id="analysis-result">
-                <p>Aquí aparecerá la interpelación crítica del modelo para ejercitar tu alfabetismo postdigital.</p>
-            </div>
-        </section>
-    </main>
+                    <button type="button" id="analyze-btn" disabled>Firmar Contrato Didáctico y Analizar</button>
+                </form>
+            </section>
 
-    <!-- LIBRERÍA DE INTELIGENCIA LÉXICA NATIVA (NLP/ML en Cliente) -->
+            <section class="card output-section">
+                <h2>3. Devolución Formativa (Pedagogía de la Pregunta)</h2>
+                <div id="analysis-result">
+                    <p class="info-text" style="text-align: center; font-style: italic;">
+                        El ecosistema está listo. Tras inicializar el motor e ingresar el manuscrito, aquí se renderizarán las métricas de soberanía léxica y las cinco interpelaciones personalizadas.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
     <script src="https://unpkg.com/compromise"></script>
-    
-    <!-- Lógica institucional optimizada -->
+    <script src="https://cdn.jsdelivr.net/npm/wink-nlp-utils@2.0.0/src/wink-nlp-utils.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
