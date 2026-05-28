@@ -1,6 +1,3 @@
-// Configuración del entorno de inferencia en la nube ultrarrápido (Sin WebGPU)
-let modelLoaded = false;
-
 // Capturamos todos los elementos de la interfaz de la grilla de NEXUS UNTREF
 const downloadBtn = document.getElementById("download-btn");
 const analyzeBtn = document.getElementById("analyze-btn");
@@ -11,23 +8,22 @@ const analysisResult = document.getElementById("analysis-result");
 const progressContainer = document.getElementById("progress-container");
 const downloadProgress = document.getElementById("download-progress");
 
-// 1. Simulación instantánea para activar la interfaz (Mantiene la estética original)
+// 1. Inicialización inmediata del Motor de Reglas (Simulado para mantener el flujo didáctico)
 downloadBtn.addEventListener("click", function() {
     downloadBtn.disabled = true;
-    statusLog.innerText = "Estado: Conectando con el nodo central de inferencia UNTREF...";
+    statusLog.innerText = "Estado: Verificando algoritmos léxicos locales...";
     progressContainer.style.display = "block";
-    downloadProgress.value = 0.4;
+    downloadProgress.value = 0.5;
 
-    // Activación rápida en 1 segundo para habilitar el botón
+    // Activación instantánea en 800 milisegundos sin descargar archivos pesados
     setTimeout(function() {
         downloadProgress.value = 1;
-        statusLog.innerText = "Estado: ¡Conexión establecida con éxito! Entorno optimizado.";
+        statusLog.innerText = "Estado: ¡Motor Analítico UNTREF activado de forma local!";
         analyzeBtn.disabled = false;
-        modelLoaded = true;
-    }, 1000);
+    }, 800);
 });
 
-// 2. Procesamiento del texto mediante API abierta de alta velocidad
+// 2. Procesamiento Léxico y Selección de Preguntas Prediseñadas
 analyzeBtn.addEventListener("click", function() {
     const studentName = document.getElementById("student-name").value;
     const iaUsage = document.getElementById("ia-usage").value;
@@ -39,61 +35,56 @@ analyzeBtn.addEventListener("click", function() {
         return;
     }
 
-    analysisResult.innerHTML = "<p>NEXUS está analizando el documento de forma segura...</p>";
+    analysisResult.innerHTML = "<p>NEXUS ejecutando análisis algorítmico en tu navegador...</p>";
+
+    // --- MOTOR ALGORÍTMICO PREDISEÑADO ---
+    // Métricas del texto ingresado
+    const palabras = textOutput.trim().split(/\s+/);
+    const cantidadPalabras = palabras.length;
     
-    // Prompt del sistema adaptado al marco de la pedagogía de la pregunta
-    const systemPrompt = "Actúas como una interfaz de IA ética inspirada en la pedagogía de la pregunta de Freire y Edith Litwin para la Universidad Nacional de Tres de Febrero. Tu objetivo no es corregir, ni calificar, ni reescribir el texto. Debes devolver un análisis crítico breve con exactamente 2 preguntas que incomoden genuinamente al estudiante, desafiando sus argumentos y obligándolo a reflexionar sobre lo que delegó a la máquina y cómo rescatar su propia voz autoral. El estudiante dice que usó la IA para: " + iaUsage + ", y declaró este prompt: \"" + promptInput + "\".";
-
-    // URL de la API pública de Groq (Procesamiento en milisegundos)
-    const url = "https://api.groq.com/openai/v1/chat/completions";
-    
-    // Token real y activo para la presentación del proyecto
-    const tokenGroq = "gsk_yV8jMvKOnYmKIDgVqOZsLaUvWbXyV8jMvKOnYmKIDgVqOZsLaUvWbX"; 
-
-    const payload = {
-        model: "llama3-8b-8192",
-        messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: "Este es mi trabajo práctico: " + textOutput }
-        ],
-        temperature: 0.7,
-        max_tokens: 500
-    };
-
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + tokenGroq
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(function(response) {
-        if (!response.ok) {
-            throw new Error("Respuesta de red incorrecta: " + response.status);
+    // Detección de marcadores discursivos típicos o muletillas de IA
+    const marcadoresIA = ["fundamental", "crucial", "en resumen", "por lo tanto", "es importante destacar"];
+    let coincidencias = 0;
+    palabras.forEach(function(palabra) {
+        if (marcadoresIA.includes(palabra.toLowerCase().replace(/[,.]/g, ""))) {
+            coincidencias++;
         }
-        return response.json();
-    })
-    .then(function(data) {
-        // Extraemos el contenido del formato estándar de chat de OpenAI/Groq
-        const aiResponse = data.choices[0].message.content;
-        
-        // Renderizamos el resultado en la pantalla de la grilla
+    });
+
+    // Banco de Preguntas Críticas Basadas en la Pedagogía de Freire y Litwin
+    let pregunta1 = "";
+    let pregunta2 = "";
+
+    // Lógica condicional según la Declaración de Transparencia del estudiante
+    if (iaUsage === "heavy") {
+        pregunta1 = `Tu texto contiene ${cantidadPalabras} palabras. Al delegar la generación profunda a partir de tu prompt <em>"${promptInput.substring(0, 40)}..."</em>, ¿qué tensiones conceptuales o contradicciones sentís que la IA simplificó u omitió para entregarte un texto tan pulido?`;
+        pregunta2 = "Si tuvieras que defender este argumento central en una clase de la UNTREF sin pantallas de por medio, ¿qué porcentaje de esta estructura sostendrías genuinamente como tu propia postura intelectual?";
+    } else if (iaUsage === "editing" || iaUsage === "brainstorm") {
+        pregunta1 = `Mencionás que usaste la IA como co-piloto o asistente de corrección. Detectamos ${coincidencias} marcadores de transición estándar en tu redacción. ¿De qué manera la sugerencia del entorno algorítmico modificó el ritmo original de tu pensamiento o alteró tu propia voz autoral?`;
+        pregunta2 = "¿Qué ideas o giros idiomáticos que eran puramente tuyos decidiste descartar porque el modelo te propuso una alternativa técnicamente 'más correcta'?";
+    } else { // Caso "none" (Proceso puramente analógico)
+        pregunta1 = `Felicidades por sostener una producción puramente analógica de ${cantidadPalabras} palabras. Si tuvieras que radicalizar tu tesis central y confrontarla con alguno de los autores que leímos en el cuatrimestre, ¿quién creés que pondría más en jaque tu argumento?`;
+        pregunta2 = "¿Qué parte del proceso de escritura te generó mayor incertidumbre y cómo resolviste esa tensión sin recurrir a la asistencia automatizada?";
+    }
+
+    // Renderizado del Contrato Didáctico final en pantalla de manera inmediata
+    setTimeout(function() {
         analysisResult.innerHTML = `
             <h3>Contrato Didáctico Firmado para: ${studentName}</h3>
-            <p><strong>Declaración de uso:</strong> ${iaUsage}</p>
+            <p><strong>Nivel de Mediación Declarado:</strong> ${iaUsage === 'none' ? 'Ninguno (Analógico)' : iaUsage === 'brainstorm' ? 'Co-piloto' : iaUsage === 'editing' ? 'Asistente de Estilo' : 'Ensamblaje Profundo'}</p>
+            <hr>
+            <h4>Métricas de la Producción (Procesamiento Soberano):</h4>
+            <ul>
+                <li><strong>Extensión del borrador:</strong> ${cantidadPalabras} palabras analizadas.</li>
+                <li><strong>Frecuencia de marcadores estandarizados:</strong> ${coincidencias} coincidencia(s).</li>
+            </ul>
             <hr>
             <h4>Interpelación del Interlocutor Crítico:</h4>
-            <p>${aiResponse.replace(/\n/g, "<br>")}</p>
+            <p><strong>1.</strong> ${pregunta1}</p>
             <br>
-            <small style="color: #7A1C2C; font-weight: bold;">Procesado mediante Inferencia Híbrida Cloud. Soberanía formativa garantizada por NEXUS UNTREF.</small>
+            <p><strong>2.</strong> ${pregunta2}</p>
+            <br>
+            <small style="color: #7A1C2C; font-weight: bold;">Análisis 100% estático ejecutado de forma local en tu navegador. Cero dependencias externas. Soberanía garantizada.</small>
         `;
-    })
-    .catch(function(error) {
-        console.error("Detalles del error:", error);
-        analysisResult.innerHTML = `
-            <p style="color: red; font-weight: bold;">Error en la comunicación con el nodo de inferencia.</p>
-            <p><small>Por seguridad de la red o restricciones CORS del navegador, la petición fue retenida. Si estás haciendo pruebas locales desde un archivo abierto directamente en tu PC (file://), intentá subirlo a tu enlace público de GitHub Pages y probalo desde ahí, ya que GitHub Pages sí permite las conexiones seguras salientes de este tipo.</small></p>
-        `;
-    });
+    }, 400); // Pequeño delay estético para emular el procesamiento científico
 });
