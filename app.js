@@ -38,7 +38,7 @@ analyzeBtn.addEventListener("click", function() {
     analysisResult.innerHTML = "<p>NEXUS ejecutando análisis algorítmico en tu navegador...</p>";
 
     // --- MOTOR ALGORÍTMICO PREDISEÑADO ---
-    // Métricas del texto ingresado
+    // Métricas del texto ingresado (Equivalente a un split de Python)
     const palabras = textOutput.trim().split(/\s+/);
     const cantidadPalabras = palabras.length;
     
@@ -51,7 +51,7 @@ analyzeBtn.addEventListener("click", function() {
         }
     });
 
-    // Banco de Preguntas Críticas Basadas en la Pedagogía de Freire y Litwin
+    // Banco de Preguntas Críticas Basadas en la Pedagogía de la Pregunta
     let pregunta1 = "";
     let pregunta2 = "";
 
@@ -61,9 +61,9 @@ analyzeBtn.addEventListener("click", function() {
         pregunta2 = "Si tuvieras que defender este argumento central en una clase de la UNTREF sin pantallas de por medio, ¿qué porcentaje de esta estructura sostendrías genuinamente como tu propia postura intelectual?";
     } else if (iaUsage === "editing" || iaUsage === "brainstorm") {
         pregunta1 = `Mencionás que usaste la IA como co-piloto o asistente de corrección. Detectamos ${coincidencias} marcadores de transición estándar en tu redacción. ¿De qué manera la sugerencia del entorno algorítmico modificó el ritmo original de tu pensamiento o alteró tu propia voz autoral?`;
-        pregunta2 = "¿Qué ideas o giros idiomáticos que eran puramente tuyos decidiste descartar porque el modelo te propuso una alternativa técnicamente 'más correcta'?";
+        pregunta2 = "¿Qué ideas o giros idiomáticos que eran puramente de tu autoría decidiste descartar porque el modelo te propuso una alternativa técnicamente 'más correcta'?";
     } else { // Caso "none" (Proceso puramente analógico)
-        pregunta1 = `Felicidades por sostener una producción puramente analógica de ${cantidadPalabras} palabras. Si tuvieras que radicalizar tu tesis central y confrontarla con alguno de los autores que leímos en el cuatrimestre, ¿quién creés que pondría más en jaque tu argumento?`;
+        pregunta1 = `Felicidades por sostener una producción puramente analógica de ${cantidadPalabras} palabras. Si tuvieras que radicalizar tu tesis central y confrontarla con alguno de los autores clave del programa, ¿quién creés que pondría más en jaque tu argumento?`;
         pregunta2 = "¿Qué parte del proceso de escritura te generó mayor incertidumbre y cómo resolviste esa tensión sin recurrir a la asistencia automatizada?";
     }
 
@@ -86,5 +86,5 @@ analyzeBtn.addEventListener("click", function() {
             <br>
             <small style="color: #7A1C2C; font-weight: bold;">Análisis 100% estático ejecutado de forma local en tu navegador. Cero dependencias externas. Soberanía garantizada.</small>
         `;
-    }, 400); // Pequeño delay estético para emular el procesamiento científico
+    }, 400); // Pequeño delay estético para emular el procesamiento analítico
 });
