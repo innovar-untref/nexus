@@ -17,7 +17,7 @@
         <section class="card setup-section">
             <h2>1. Inicialización del Modelo Soberano</h2>
             <p class="info-text">El modelo se descargará en tu navegador de forma local mediante WebGPU (Ocurre una sola vez).</p>
-            <button id="download-btn">Descargar Modelo Liviano (Gemma-2B)</button>
+            <button id="download-btn">Descargar Modelo Ultraliviano (SmolLM2)</button>
             <div id="status-log">Estado: Esperando inicio...</div>
         </section>
 
@@ -55,6 +55,10 @@
         </section>
     </main>
 
-    <script type="module" src="app.js"></script>
+    <!-- Cargamos la librería de WebLLM de forma global en el navegador (Evita usar módulos JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.46/dist/index.js"></script>
+    
+    <!-- Cargamos nuestra lógica de JavaScript tradicional -->
+    <script src="app.js"></script>
 </body>
 </html>
