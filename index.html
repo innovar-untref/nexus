@@ -9,12 +9,14 @@
 <body>
 
     <div class="container">
+        <!-- Encabezado Institucional -->
         <header>
             <h1>NEXUS UNTREF</h1>
             <p>Ecosistema de Evaluación Antifrágil y Transparencia Postdigital</p>
         </header>
 
         <main>
+            <!-- SECCIÓN 1: Activación del Entorno -->
             <section class="card setup-section">
                 <h2>1. Inicialización del Motor Algorítmico</h2>
                 <p class="info-text">
@@ -30,6 +32,7 @@
                 <div id="status-log">Estado: Esperando firma del entorno didáctico...</div>
             </section>
 
+            <!-- SECCIÓN 2: El Contrato Didáctico -->
             <section class="card form-section">
                 <h2>2. Declaración de Transparencia (Estudiante)</h2>
                 <form id="grilla-form" onsubmit="return false;">
@@ -47,26 +50,29 @@
                     <label for="prompt-input">Ingeniería de Prompts y Contexto de Consulta (Opcional):</label>
                     <textarea id="prompt-input" rows="3" placeholder="Ej: Actúa como un interlocutor crítico según el marco teológico..."></textarea>
 
-                    <label for="text-output">Manuscrito o Producción Académica para Evaluar:</label>
-                    <textarea id="text-output" rows="8" required placeholder="Pegá o escribí acá el texto completo de tu borrador para iniciar la interpelación pedagógica..."></textarea>
+                    <label for="text-output">Producción Académica para Evaluar:</label>
+                    <textarea id="text-output" rows="8" required placeholder="Pegá o escribí acá el texto completo de tu borrador académico para iniciar la interpelación pedagógica..."></textarea>
 
                     <button type="button" id="analyze-btn" disabled>Firmar Contrato Didáctico y Analizar</button>
                 </form>
             </section>
 
+            <!-- SECCIÓN 3: Devolución Crítica -->
             <section class="card output-section">
                 <h2>3. Devolución Formativa (Pedagogía de la Pregunta)</h2>
                 <div id="analysis-result">
                     <p class="info-text" style="text-align: center; font-style: italic;">
-                        El ecosistema está listo. Tras inicializar el motor e ingresar el manuscrito, aquí se renderizarán las métricas de soberanía léxica y las cinco interpelaciones personalizadas.
+                        El ecosistema está listo. Tras inicializar el motor e ingresar el borrador académico, aquí se renderizarán las métricas de soberanía léxica y las cinco interpelaciones desplegables.
                     </p>
                 </div>
             </section>
         </main>
     </div>
 
+    <!-- Bibliotecas de procesamiento lingüístico externo -->
     <script src="https://unpkg.com/compromise"></script>
     <script src="https://cdn.jsdelivr.net/npm/wink-nlp-utils@2.0.0/src/wink-nlp-utils.js"></script>
+    <!-- Conexión al motor lógico local -->
     <script src="app.js"></script>
 </body>
 </html>
