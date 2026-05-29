@@ -1,12 +1,268 @@
 /* ==========================================================================
-   INTERFAZ DE ACORDEÓN DESPLEGABLE PARA PREGUNTAS (NEXUS CRÍTICO)
+   NEXUS UNTREF - Ecosistema de Estilos Oficiales
    ========================================================================== */
 
+:root {
+    --untref-azul: #1E5F94;          
+    --untref-azul-oscuro: #15436A;   
+    --untref-celeste-nav: #1B75BB;   
+    --untref-fondo: #FFFFFF;         
+    --untref-superficie: #FFFFFF;
+    --untref-gris-texto: #1A1A1A;    
+    --untref-gris-mutado: #5A5A5A;   
+    --untref-borde: #E2E8F0;         
+    --untref-rojo-alerta: #C53030;   
+    --untref-verde-exito: #2F855A;   
+    --sombra-sutil: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--untref-fondo);
+    color: var(--untref-gris-texto);
+    line-height: 1.6;
+    padding: 3rem 1rem;
+}
+
+.container {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--untref-azul);
+    padding-bottom: 1.8rem;
+}
+
+header h1 {
+    color: var(--untref-gris-texto);
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.4rem;
+}
+
+header p {
+    color: var(--untref-gris-mutado);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.card {
+    background-color: var(--untref-superficie);
+    border: 1px solid var(--untref-borde);
+    border-radius: 4px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--sombra-sutil);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+.card h2 {
+    color: var(--untref-azul);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--untref-borde);
+    padding-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-text {
+    color: var(--untref-gris-mutado);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--untref-gris-texto);
+    font-size: 0.95rem;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 1.8rem;
+    border: 1px solid var(--untref-borde);
+    border-radius: 4px;
+    background-color: #FAFAFA;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--untref-gris-texto);
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--untref-azul);
+    background-color: var(--untref-superficie);
+    box-shadow: 0 0 0 3px rgba(30, 95, 148, 0.15);
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+#download-btn {
+    background-color: #334155;
+    color: white;
+}
+
+#download-btn:hover:not(:disabled) {
+    background-color: #0f172a;
+}
+
+#analyze-btn {
+    background-color: var(--untref-azul);
+    color: white;
+}
+
+#analyze-btn:hover:not(:disabled) {
+    background-color: var(--untref-azul-oscuro);
+}
+
+button:disabled {
+    background-color: #E2E8F0 !important;
+    color: #94A3B8 !important;
+    cursor: not-allowed;
+}
+
+#status-log {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.log-processing {
+    color: var(--untref-celeste-nav);
+    animation: palpitar 1.5s infinite;
+}
+
+.log-success {
+    color: var(--untref-verde-exito);
+}
+
+progress {
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar { background-color: #E2E8F0; }
+progress::-webkit-progress-value { background-color: var(--untref-celeste-nav); }
+
+.report-header {
+    border-bottom: 2px solid var(--untref-azul);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.report-header h3 {
+    color: var(--untref-gris-texto);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.badge-status {
+    background-color: var(--untref-azul);
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.metrics-box {
+    background-color: #F8FAFC;
+    border-left: 5px solid var(--untref-azul);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.metrics-title {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--untref-azul-oscuro);
+    margin-bottom: 1rem;
+}
+
+.metrics-table {
+    width: 100%;
+    font-size: 0.95rem;
+    border-collapse: collapse;
+}
+
+.metrics-table td {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.text-right { text-align: right; }
+
+.tag {
+    display: inline-block;
+    background-color: #F1F5F9;
+    color: #475569;
+    padding: 3px 8px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    margin: 3px;
+    border-radius: 3px;
+    border: 1px solid #CBD5E1;
+}
+
+.diagnostico-text {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+}
+
+.interpellation-title {
+    margin: 2.5rem 0 1.5rem 0;
+    font-size: 1.2rem;
+    color: var(--untref-gris-texto);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--untref-borde);
+    padding-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+}
+
+/* INTERFAZ DE ACORDEÓN DESPLEGABLE */
 .questions-container {
     margin-top: 1.5rem;
 }
 
-/* El contenedor del desplegable utiliza la etiqueta nativa <details> */
 .dimension-accordion {
     border: 1px solid var(--untref-borde);
     border-radius: 4px;
@@ -21,26 +277,23 @@
     border-color: var(--untref-azul);
 }
 
-/* La cabecera del desplegable que contiene la pregunta */
 .dimension-accordion summary {
     padding: 1.2rem;
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--untref-gris-texto);
     cursor: pointer;
-    list-style: none; /* Quita la flecha nativa de algunos navegadores */
+    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     user-select: none;
 }
 
-/* Quitar la flecha nativa en Chrome/Safari */
 .dimension-accordion summary::-webkit-details-marker {
     display: none;
 }
 
-/* Crear nuestra propia flecha institucional elegante */
 .dimension-accordion summary::after {
     content: '➔';
     font-size: 0.85rem;
@@ -57,7 +310,6 @@
     background-color: #F8FAFC;
 }
 
-/* Contenido interior cuando se despliega */
 .accordion-content {
     padding: 0 1.2rem 1.2rem 1.2rem;
     border-top: 1px dashed var(--untref-borde);
@@ -72,7 +324,6 @@
     text-align: justify;
 }
 
-/* Cuadro de texto para la respuesta del estudiante */
 .student-response-area {
     width: 100%;
     height: 120px;
@@ -90,4 +341,10 @@
     outline: none;
     border-color: var(--untref-celeste-nav);
     box-shadow: 0 0 0 3px rgba(27, 117, 187, 0.15);
+}
+
+@keyframes palpitar {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
